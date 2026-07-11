@@ -57,20 +57,6 @@ describe('settings', () => {
             });
         });
 
-        it('should migrate legacy session status toggle to placement', () => {
-            expect(settingsParse({ showSessionStatusBar: false })).toEqual({
-                ...settingsDefaults,
-                showSessionStatusBar: false,
-                sessionStatusInfoPlacement: 'gearbox',
-            });
-
-            expect(settingsParse({ showSessionStatusBar: true }).sessionStatusInfoPlacement).toBe('composer');
-            expect(settingsParse({
-                showSessionStatusBar: true,
-                sessionStatusInfoPlacement: 'gearbox',
-            }).sessionStatusInfoPlacement).toBe('gearbox');
-        });
-
         it('should handle settings with null/undefined values', () => {
             const settingsWithNull = {
                 viewInline: null,
@@ -203,8 +189,7 @@ describe('settings', () => {
                 avatarStyle: 'brutalist',
                 showFlavorIcons: false,
                 userMessageBubbleColor: 'gray',
-                sessionStatusInfoPlacement: 'composer',
-                showSessionStatusBar: true,
+                sessionStatusBarDisplay: 'hidden',
                 hideInactiveSessions: false,
                 sortSessionsByActivity: false,
                 expResumeSession: false,
